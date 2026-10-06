@@ -1,0 +1,12 @@
+syntax = "proto3";
+package lab;
+option java_multiple_files = true;
+
+message OrderRequest { int32 id = 1; }
+message Order { int32 id = 1; string status = 2; }
+message WatchRequest { int32 count = 1; }
+
+service Orders {
+  rpc Get(OrderRequest) returns (Order);              // unary
+  rpc Watch(WatchRequest) returns (stream Order);     // server streaming
+}
